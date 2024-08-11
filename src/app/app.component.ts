@@ -42,7 +42,7 @@ export class AppComponent {
     }
   }
 
-  email(token: string) {
+  public onloadTurnstileCallback(token: string){
     console.log(`Challenge Success ${token}`);
   }
 }
