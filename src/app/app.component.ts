@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ClarityIcons, envelopeIcon, fishIcon } from '@cds/core/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxTurnstileModule } from 'ngx-turnstile';
 
 @Component({
   selector: 'app-root',
@@ -14,35 +15,26 @@ import { BrowserModule } from '@angular/platform-browser';
     ClarityModule,
     CommonModule,
     ClrModalModule,
+    NgxTurnstileModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
 
-  turnstileUrl: string = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback";
-
   openModal = false;
 
+  siteKey = '0x4AAAAAAAhCRjirPNYs2P4O';
+
   title = 'Tneda';
+
   constructor(
-    private element: ElementRef
   ) {
     ClarityIcons.addIcons(fishIcon, envelopeIcon);
   }
 
-  ngAfterViewInit() {
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = this.turnstileUrl;
 
-    const div = document.getElementById('script');
-    if (div != null) {
-      div.insertAdjacentElement('afterend', script);
-    }
-  }
-
-  public onloadTurnstileCallback(token: string){
-    console.log(`Challenge Success ${token}`);
+  sendCaptchaResponse($event: string | null) {
+    console.log($event);
   }
 }

@@ -21,6 +21,7 @@
     "@cds/core": "^6.13.0",
     "@clr/angular": "^17.2.1",
     "@clr/ui": "^17.2.1",
+    "ngx-turnstile": "^0.2.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
