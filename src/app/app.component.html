@@ -24,6 +24,19 @@
         <li>Backend/Frontend: Spring Boot, Angular, Clarity UI.</li>
         <li>Database: MongoDB, Redis, MySQL.</li>
       </ul>
+      <button type="button" class="btn btn-icon" aria-label="contact" (click)="openModal = true">
+        <cds-icon shape="envelope"></cds-icon>Contact
+      </button>
+      <clr-modal [(clrModalOpen)]="openModal" [clrModalSize]="'lg'">
+        <div class="modal-title">title</div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="openModal = false">Ok</button>
+        </div>
+      </clr-modal>
+      <div id="script"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAAhCRjirPNYs2P4O" data-callback="email"></div>
     </div>
   </div>
 </div>
