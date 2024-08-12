@@ -39,7 +39,10 @@
           @if(fetchingUserInformation){
             <clr-spinner>Loading data</clr-spinner>
           }@else {
-            {{secretData}}
+            <h5>Email</h5>
+            {{secretData.email}}
+            <h5>LinkedIn</h5>
+            {{secretData.linkedin}}
           }
         </div>
         <div class="modal-footer">

@@ -26,25 +26,25 @@ export class AppComponent {
 
   openModal = false;
   fetchingUserInformation = true;
-  secretData = {};
+  secretData: { email: string, linkedin: string } = { email: "", linkedin: "" };
 
   siteKey = '0x4AAAAAAAhCRjirPNYs2P4O';
 
   title = 'Tneda';
 
   constructor(
-    private http : HttpClient
+    private http: HttpClient
   ) {
     ClarityIcons.addIcons(fishIcon, envelopeIcon);
   }
 
 
   sendCaptchaResponse($event: string | null) {
-    if($event != null){
+    if ($event != null) {
       let formData: FormData = new FormData();
-      formData.append("cf-turnstile-response",$event);
-      this.http.post<{}>("https://naninuneda.com/turnstile",formData).subscribe(
-        res=>{
+      formData.append("cf-turnstile-response", $event);
+      this.http.post<{ email: string, linkedin: string }>("https://naninuneda.com/turnstile", formData).subscribe(
+        res => {
           this.secretData = res;
           this.fetchingUserInformation = false;
         });
