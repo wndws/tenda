@@ -6,6 +6,7 @@ import { ClarityIcons, envelopeIcon, fishIcon } from '@cds/core/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxTurnstileModule } from 'ngx-turnstile';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +30,20 @@ export class AppComponent {
   title = 'Tneda';
 
   constructor(
+    private http : HttpClient
   ) {
     ClarityIcons.addIcons(fishIcon, envelopeIcon);
   }
 
 
   sendCaptchaResponse($event: string | null) {
-    console.log($event);
+    if($event != null){
+      let formData: FormData = new FormData();
+      formData.append("cf-turnstile-response",$event);
+      this.http.post("https://naninuneda.com/turnstile",formData).subscribe(
+        res=>{
+          console.log(res);
+        });
+    }
   }
 }
