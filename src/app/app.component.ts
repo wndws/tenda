@@ -6,7 +6,7 @@ import { ClarityIcons, envelopeIcon, fishIcon } from '@cds/core/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxTurnstileModule } from 'ngx-turnstile';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
     CommonModule,
     ClrModalModule,
     NgxTurnstileModule,
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
