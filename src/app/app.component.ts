@@ -25,6 +25,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class AppComponent {
 
   openModal = false;
+  fetchingUserInformation = true;
+  secretData = {};
 
   siteKey = '0x4AAAAAAAhCRjirPNYs2P4O';
 
@@ -41,9 +43,10 @@ export class AppComponent {
     if($event != null){
       let formData: FormData = new FormData();
       formData.append("cf-turnstile-response",$event);
-      this.http.post("https://naninuneda.com/turnstile",formData).subscribe(
+      this.http.post<{}>("https://naninuneda.com/turnstile",formData).subscribe(
         res=>{
-          console.log(res);
+          this.secretData = res;
+          this.fetchingUserInformation = false;
         });
     }
   }

@@ -10,6 +10,11 @@
   <div class="content-container">
     <div class="content-area">
       <h2>T. Neda</h2>
+      <h3>About</h3>
+      <ul>
+        <li>Technical Support Engineer</li>
+        <li>Full Stack Web Developer</li>
+      </ul>
       <h3>Skills</h3>
       <h4>System Debugging</h4>
       <ul>
@@ -28,14 +33,19 @@
         <cds-icon shape="envelope"></cds-icon>Contact
       </button>
       <clr-modal [(clrModalOpen)]="openModal" [clrModalSize]="'lg'">
-        <div class="modal-title">title</div>
+        <div class="modal-title">Email & LinkedIn</div>
         <div class="modal-body">
+          <ngx-turnstile [siteKey]="siteKey" (resolved)="sendCaptchaResponse($event)" theme="auto" [tabIndex]="0"></ngx-turnstile>
+          @if(fetchingUserInformation){
+            <clr-spinner>Loading data</clr-spinner>
+          }@else {
+            {{secretData}}
+          }
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="openModal = false">OK</button>
         </div>
       </clr-modal>
-      <ngx-turnstile [siteKey]="siteKey" (resolved)="sendCaptchaResponse($event)" theme="auto" [tabIndex]="0"></ngx-turnstile>
     </div>
   </div>
 </div>
