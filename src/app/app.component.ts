@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +26,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class AppComponent {
 
   openModal = false;
-  fetchingUserInformation = true;
-  secretData: { email: string, linkedin: string } = { email: "", linkedin: "" };
+  secretData$: Observable<{ email: string, linkedin: string }> = of({ email: "", linkedin: "" });
 
   siteKey = '0x4AAAAAAAhCRjirPNYs2P4O';
 
@@ -43,11 +43,7 @@ export class AppComponent {
     if ($event != null) {
       let formData: FormData = new FormData();
       formData.append("cf-turnstile-response", $event);
-      this.http.post<{ email: string, linkedin: string }>("https://naninuneda.com/turnstile", formData).subscribe(
-        res => {
-          this.secretData = res;
-          this.fetchingUserInformation = false;
-        });
+      this.secretData$ = this.http.post<{ email: string, linkedin: string }>("https://naninuneda.com/turnstile", formData);
     }
   }
 }
