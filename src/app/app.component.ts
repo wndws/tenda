@@ -26,7 +26,7 @@ import { Observable, of } from 'rxjs';
 export class AppComponent {
 
   openModal = false;
-  secretData$: Observable<{ email: string, linkedin: string }> = of({ email: "", linkedin: "" });
+  secretData$!: Observable<{ email: string, linkedin: string }>;
 
   siteKey = '0x4AAAAAAAhCRjirPNYs2P4O';
 
@@ -37,7 +37,6 @@ export class AppComponent {
   ) {
     ClarityIcons.addIcons(fishIcon, envelopeIcon);
   }
-
 
   sendCaptchaResponse($event: string | null) {
     if ($event != null) {
