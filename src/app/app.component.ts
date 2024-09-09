@@ -1,13 +1,11 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ClarityModule, ClrModalModule } from "@clr/angular";
 import { CommonModule } from '@angular/common';
 import { ClarityIcons, envelopeIcon, fishIcon } from '@cds/core/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgxTurnstileModule } from 'ngx-turnstile';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +16,9 @@ import { Observable, of } from 'rxjs';
     CommonModule,
     ClrModalModule,
     NgxTurnstileModule,
-    HttpClientModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
 
@@ -46,3 +43,11 @@ export class AppComponent {
     }
   }
 }
+function provideClientHydration(arg0: any): import("@angular/core").Provider {
+  throw new Error('Function not implemented.');
+}
+
+function withEventReplay(): any {
+  throw new Error('Function not implemented.');
+}
+

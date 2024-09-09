@@ -13,7 +13,6 @@
       <h3>About</h3>
       <ul>
         <li>Technical Support Engineer</li>
-        <li>Full Stack Web Developer</li>
       </ul>
       <h3>Skills</h3>
       <h4>System Debugging</h4>
@@ -25,9 +24,9 @@
       </ul>
       <h4>Web Application Development</h4>
       <ul>
-        <li>Environment: GitLab, Docker, Kubernetes.</li>
-        <li>Backend/Frontend: Spring Boot, Angular, Clarity UI.</li>
-        <li>Database: MongoDB, Redis, MySQL.</li>
+        <li>environment: GitLab, Docker, Kubernetes.</li>
+        <li>backend/Frontend: Spring Boot, Angular, Clarity UI.</li>
+        <li>batabase: MongoDB, Redis, MySQL.</li>
       </ul>
       <button type="button" class="btn btn-icon" aria-label="contact" (click)="openModal = true">
         <cds-icon shape="envelope"></cds-icon>Contact
@@ -42,9 +41,9 @@
           @if(secretData$ | async ; as sdata){
             @defer () {
               <h5>Email</h5>
-              {{sdata.email}}
+              <a href="mailto:{{sdata.email}}">{{sdata.email}}</a>
               <h5>LinkedIn</h5>
-              {{sdata.linkedin}}
+              <a href="{{sdata.linkedin}}">{{sdata.linkedin}}</a>
             }@placeholder {
               <clr-spinner>Loading data</clr-spinner>
             }
